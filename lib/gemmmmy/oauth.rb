@@ -13,7 +13,7 @@ module Gemmmmy
       system "open #{request_token.authorize_url}"
 
       puts "Enter the PIN code:"
-      code = gets.strip
+      code = $stdin.gets.strip
 
       access_token = client.authorize(
         request_token.token,
