@@ -18,6 +18,12 @@ end
 argv = argv.slice(1, ARGV.length)
 
 unless screen_name
+  argv.each do |arg|
+    screen_name = $1 if arg =~ /^@([a-zA-Z0-9_]+)$/
+  end
+end
+
+unless screen_name
   raise "screen_name not found, add --as [screen_name]"
 end
 
