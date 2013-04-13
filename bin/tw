@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+
+require "optparse"
+require File.expand_path("../../lib/gemmmmy.rb", __FILE__)
+
+screen_name = nil
+opt = OptionParser.new
+opt.on("--as VAL", "-a VAL",
+       "tweeter screen name(ex: @yamitzky)") do |value|
+  screen_name = value
+end
+argv = opt.parse(ARGV)
+
+command = argv[0]
+unless command
+  raise "command needed. see the methods of gem \"twitter\""
+end
+argv = argv.slice(1, ARGV.length)
+
+unless screen_name
+  raise "screen_name not found, add --as [screen_name]"
+end
+
+Gemmmmy::Command.call(command, screen_name, argv)
