@@ -19,7 +19,11 @@ argv = argv.slice(1, ARGV.length)
 
 unless screen_name
   argv.each do |arg|
-    screen_name = $1 if arg =~ /^@([a-zA-Z0-9_]+)$/
+    if arg =~ /^@([a-zA-Z0-9_]+)$/
+      screen_name = $1
+      argv.delete arg
+      break
+    end
   end
 end
 
