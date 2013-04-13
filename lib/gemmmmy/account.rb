@@ -16,6 +16,16 @@ module Gemmmmy
       accounts = @config["accounts"]
       account = accounts[screen_name] if accounts
 
+      unless account
+        accounts.keys.each do |long_name|
+          if long_name.start_with? screen_name
+            screen_name = long_name
+            account = accounts[screen_name] if accounts
+            break
+          end
+        end
+      end
+
       if account
         parse!(account)
       else
