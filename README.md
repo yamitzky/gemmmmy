@@ -1,4 +1,4 @@
 gemmmmy
 =======
 
-Twitter client for terminal for me, not for you
+The Twitter client on a terminal for me, not for you
